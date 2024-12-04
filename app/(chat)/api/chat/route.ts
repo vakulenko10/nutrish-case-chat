@@ -332,14 +332,15 @@ export async function POST(request: Request) {
         parameters: z.object({
           query: z.string().describe("The supplement name to search for"),
           fields: z.string().describe("Specific words to look for"),
-          maxResults: z.string().describe("The limit of items which we want to receive in the json response")
+          maxResults: z.string().describe("The limit of items which we want to receive in the json response"),
+          summary: z.boolean().describe("The boolean value which is deciding whether to make the response shorter or not")
         }),
-        execute: async ({ query, fields, maxResults }) => {
+        execute: async ({ query, fields, maxResults, summary }) => {
             // Fetch data from the web-scraping service
             const response = await fetch(
-              `https://nutrish-case.onrender.com/fetch?query=${query}&fields=${fields}&maxResults=${maxResults}`
+              `https://nutrish-case.onrender.com/fetch-optimized?query=${query}&fields=${fields}&maxResults=${maxResults}`
             );
-            console.log(`https://nutrish-case.onrender.com/fetch?query=${query}&fields=${fields}&maxResults=${maxResults}`)
+            console.log(`https://nutrish-case.onrender.com/fetch-optimized?query=${query}&fields=${fields}&maxResults=${maxResults}&summarry=${summary}`)
             console.log('i am inside here...')
             const data = await response.json();
             return {
