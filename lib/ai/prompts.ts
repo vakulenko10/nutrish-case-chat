@@ -19,6 +19,15 @@ export const blocksPrompt = `
   - Follow user instructions for which parts to modify
 
   Do not update document right after creating it. Wait for user feedback or request to update it.
+
+
+  This is a guide for using supplements data fetching tool: \`examineTool\`, which renders the text response.
+  **Using \`examineTool\`:**
+- Use when detailed information about supplements is needed.
+- Ensure the response is human-readable and conversational.
+- Summarize the fetched data into concise, helpful text, avoiding raw JSON output.
+- Do not provide unnecessary or redundant details.
+- Specify that you are summarizing the data fetched from the examine.com
   `;
 
 export const regularPrompt =
