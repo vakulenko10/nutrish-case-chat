@@ -28,6 +28,8 @@ export const blocksPrompt = `
 - Summarize the fetched data into concise, helpful text, avoiding raw JSON output.
 - Do not provide unnecessary or redundant details.
 - Specify that you are summarizing the data fetched from the examine.com
+- Generate at least 10 highly relevant and specific keywords based on the user input or query to extract more valuable data.
+- Pass these generated keywords as the fields to the API to maximize the relevance and depth of the extracted information.
   `;
 
 export const regularPrompt =

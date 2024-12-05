@@ -338,14 +338,15 @@ export async function POST(request: Request) {
         execute: async ({ query, fields, maxResults, summary }) => {
             // Fetch data from the web-scraping service
             const response = await fetch(
-              `https://nutrish-case.onrender.com/fetch-optimized?query=${query}&fields=${fields}&maxResults=${maxResults}`
+              `${process.env.EXAMINE_WEB_SCRAPING_SERVER_URL}?query=${query}&fields=${fields}&maxResults=${maxResults}`
             );
-            console.log(`https://nutrish-case.onrender.com/fetch-optimized?query=${query}&fields=${fields}&maxResults=${maxResults}&summarry=${summary}`)
+            
             console.log('i am inside here...')
             const data = await response.json();
             return {
               message: `Here is the information about ${query}:`,
               data: data.extractedData,
+              suggestions: data.suggestions
             };
         },
       },
